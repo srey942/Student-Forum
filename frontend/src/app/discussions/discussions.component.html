@@ -1,0 +1,73 @@
+<div class="wrapper d-flex w-100 h-100" id="wrapper">
+  <nav id="sidebar">
+    <div class="sidebar-sticky text-center">
+      <div class="sidebar-header">
+        <a class="navbar-brand" href="#"><img src="assets/logo.png" class="logo" alt="logo"></a>
+      </div>
+      <div class="quick-create text-left" title="New Post">
+        <button type="button" class="btn btn-primary" routerLink="/discussions/add"><i class="fas fa-plus"></i><span>&nbsp;&nbsp;New Post</span></button>
+      </div>
+
+      <ul class="nav flex-column text-left">
+        <li class="nav-item"><a href="#" class="nav-link" routerLink="/dashboard"><i class="fas fa-tv"></i><span>&nbsp;&nbsp;&nbsp;Dashboard</span></a></li>
+        <li class="nav-item active"><a href="#" class="nav-link" routerLink="/discussions"><i class="far fa-comments"></i><span>&nbsp;&nbsp;&nbsp;Discussions</span></a></li>
+        <li class="nav-item"><a routerLink="/comingsoon" class="nav-link"><i class="fas fa-sliders-h"></i><span>&nbsp;&nbsp;&nbsp;Settings</span></a></li>
+        <li class="nav-item"><a routerLink="/comingsoon" class="nav-link"><i class="fas fa-question-circle"></i><span>&nbsp;&nbsp;&nbsp;Help</span></a></li>
+      </ul>
+
+      <div class="collapse-in-out" (click)="collapse()" title="collapse">
+        <i class="fas fa-angle-double-left"></i>
+      </div>
+    </div>
+  </nav>
+
+  <div id="content">
+    <div class="top-nav">
+      <nav class="navbar navbar-light pb-0 pr-2">
+        <div class="form-group search-box bg-transparent">
+          <input type="text" class="form-control bg-transparent" placeholder="Search Post by Course" #courseSearch (keyup.enter)="searchCourse(courseSearch.value)">
+          <i class="fa fa-search"></i>
+        </div>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown profile-menu">
+            <a class="nav-link dropdown-toggle pt-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img src="assets/avatar.png" class="profile-pic" alt="Chandler" />&nbsp;&nbsp;<span class="align-middle">{{userName}}</span>
+            </a>
+            <div class="dropdown-menu animate appear">
+              <a class="dropdown-item" routerLink="/comingsoon">Manage profile</a>
+              <a class="dropdown-item" (click)="logout()">Logout</a>
+            </div>
+          </li>
+          <li class="nav-item"><a class="nav-link"><i class="far fa-bell"></i><span class="badge d-inline-block"></span></a></li>
+        </ul>
+      </nav>
+
+    </div>
+
+    <div class="discussions-wrapper px-4">
+      <div class="content-title row pb-3 ml-4">
+        <div class="col-sm-5 col-xs-0 pl-3">
+          <div class="dropdown float-left">
+            <div class="dropdown-toggle cursor-pointer" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">{{selectedFilter}}</div>
+            <div class="dropdown-menu animate appear">
+              <a class="dropdown-item" (click)="changeSorting('Recent')">Recent</a>
+              <a class="dropdown-item" (click)="changeSorting('Active')">Active</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row post-list ml-4">
+        <div class="post-item col-sm-11 col-xs-12 mt-4" *ngFor="let post of posts; let i = index">
+          <h6>{{post.title}}
+            <span class="float-right comments"><i class="far fa-comment-alt"></i>&nbsp;{{comments[post.id]}}</span>
+          </h6>
+          <p class="mb-2">by&nbsp;&nbsp;{{post.author}}</p>
+          <p><i class="far fa-calendar-alt"></i>&nbsp;&nbsp;{{getTime(post.createdAt)}}</p>
+          <div class="mb-3 post-desc">{{post.content}}&nbsp;<span class="text-primary font-sm cursor-pointer" (click)="goToDetails(post.id)">Continue Reading</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

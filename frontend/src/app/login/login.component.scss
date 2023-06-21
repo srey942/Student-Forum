@@ -1,0 +1,133 @@
+@import '../common/layout.scss';
+
+.logo {
+  width: 110px;
+}
+
+.nav-item.active {
+  border-bottom: 1px solid #5068A9;
+
+  .nav-link {
+    color: #5068A9;
+  }
+}
+
+.container {
+  max-width: 1000px;
+}
+
+.login-form {
+  height: 400px;
+}
+
+.login-form-box {
+  margin: 35px 0;
+  padding-bottom: 40px;
+
+  h5 {
+    padding-bottom: 20px;
+  }
+
+  form {
+    z-index: 1;
+    width: 65%;
+    margin: 0 auto;
+  }
+
+  .form-check-label {
+    font-size: 12px;
+    vertical-align: text-bottom;
+  }
+
+  .action-bar {
+    margin-top: 30px;
+  }
+
+  .form-group .form-control {
+    width: 100%;
+  }
+
+  .input-group-text {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    transition: all 0.3s ease-in-out;
+    margin-left: -26px;
+    z-index: 1000;
+    margin-bottom: 2px;
+
+    i {
+      color: #777;
+    }
+  }
+
+  .input-group.is-invalid {
+    .form-control {
+      border-color: #dc3545;
+    }
+
+    .input-group-text i{
+      color: #dc3545;
+    }
+
+    .invalid-feedback {
+      display: block;
+    }
+  }
+
+  .form-control {
+    display: block;
+    height: 33px;
+    padding: 6px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    border-color: #8495C2;
+    background-image: none;
+    outline: none !important;
+    box-shadow: none !important;
+    border-radius: 0;
+    transition: all 0.3s ease-in-out;
+
+
+    &:focus {
+      border-bottom-width: 2px;
+
+      ~.input-group-append .input-group-text {
+        border-bottom-width: 2px;
+      }
+    }
+  }
+
+  .forgot-pwd {
+    font-size: 13px;
+    text-decoration: underline;
+  }
+}
+
+.container {
+  min-height: calc(100% - 345px);
+}
+
+@media (min-width: 992px) {
+  .navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #999;
+  opacity: 1;
+  /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #999;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #999;
+}
